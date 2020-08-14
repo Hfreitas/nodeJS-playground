@@ -9,12 +9,12 @@ const text = `123..testando`;
 async function writingFiles() {
   await writeFile('./empty.txt', text, { flag: 'wx' }, (error) => {
     // A flag wx abre o arquivo para escrita caso ele não exista
-  /*
+    /*
     Flag =>
       w: write
       x: exclusive
   */
-  // Se o arquivo existir, um erro é retornado
+    // Se o arquivo existir, um erro é retornado
     if (error) throw error;
     console.log('OK');
   });
