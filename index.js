@@ -11,10 +11,13 @@ function VALIDATE_NUMBER(input) {
   return checkInput;
 }
 
-const FACTORIAL = (num) => {
-  if (num < 0) return -1;
-  if (num == 0) return 1;
-  return num * FACTORIAL(num - 1);
+const FIBONACCI = (n) => {
+  // https://stackoverflow.com/questions/51111870/fibonacci-series-in-javascript
+  const result = [0, 1];
+  for (var i = 2; i < n; i++) {
+    result.push(result[i - 2] + result[i - 1]);
+  }
+  return result;
 };
 
 const READ_DATA = async () => {
@@ -27,7 +30,7 @@ const READ_DATA = async () => {
       validate: VALIDATE_NUMBER,
     },
   ]);
-  return console.log(FACTORIAL(parseInt(answer.number, 10)));
+  return console.log(FIBONACCI(parseInt(answer.number, 10)));
 };
 
 READ_DATA();
