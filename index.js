@@ -4,18 +4,11 @@ const marvel = './io-local/myMarvelous.txt';
 const otaku = './io-local/myOtaku.txt';
 const coach = './io-local/myCoach.txt';
 
-readFile(marvel)
-  .then((content) => {
-    console.log(`Lido arquivo 1 com ${content.byteLength} bytes`);
-    return readFile(otaku);
-  })
-  .then((content) => {
-    console.log(`Lido arquivo 2 com ${content.byteLength} bytes`);
-    return readFile(coach);
-  })
-  .then((content) => {
-    console.log(`Lido arquivo 3 com ${content.byteLength} bytes`);
+Promise.all([readFile(marvel), readFile(otaku), readFile(coach)])
+  .then(([marvel, otaku, coach]) => {
+    const fileSizeSum = marvel.byteLength + otaku.byteLength + coach.byteLength;
+    console.log(`Lidos 3 arquivos totalizando ${fileSizeSum} bytes`);
   })
   .catch((error) => {
-    console.log(`Erro ao ler arquivos: ${error.message}`);
+    console.error(`Erro ao ler arquivos: ${error.message}`);
   });
