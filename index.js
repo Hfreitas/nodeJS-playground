@@ -44,9 +44,15 @@ const READ_DATA = async () => {
       validate: VALIDATE_NUMBER,
     },
   ]);
-  return console.log(IMC_AVALIATOR(
-    IMC_CALC(parseFloat(answers.height), parseFloat(answers.weight)),
-  ));
+  try {
+    return console.log(
+      IMC_AVALIATOR(
+        IMC_CALC(parseFloat(answers.height), parseFloat(answers.weight)),
+      ),
+    );
+  } catch {
+    return console.log('Digite um valor válido');
+  }
 };
 
 READ_DATA();
