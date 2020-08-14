@@ -4,8 +4,10 @@ function VALIDATE_NUMBER(input) {
   const parsedInput = parseFloat(input);
   // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/isNaN
   const checkInput =
-    (!isNaN(parsedInput) && Number.isInteger(parsedInput)) ||
-    'Digite um valor válido';
+    (!isNaN(parsedInput) &&
+      Number.isInteger(parsedInput) &&
+      parsedInput >= 0) ||
+    'Digite um número maior que 0 ou um valor válido';
   return checkInput;
 }
 
@@ -25,9 +27,7 @@ const READ_DATA = async () => {
       validate: VALIDATE_NUMBER,
     },
   ]);
-  return console.log(
-    FACTORIAL(answer.number)
-  );
+  return console.log(FACTORIAL(parseInt(answer.number, 10)));
 };
 
 READ_DATA();
