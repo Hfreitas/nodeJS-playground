@@ -1,14 +1,34 @@
-const readFile = require('./io-local/readFile');
+const inquirer = require('inquirer');
+const fizzNumber = require('./io-local/fizzNumber');
 
-const marvel = './io-local/myMarvelous.txt';
-const otaku = './io-local/myOtaku.txt';
-const coach = './io-local/myCoach.txt';
+const READ_DATA = async () => {
+  const answers = await inquirer.prompt([
+    {
+      name: 'param_1',
+      type: 'number',
+      message: 'Digite o primeiro número',
+    },
+    {
+      name: 'param_2',
+      type: 'number',
+      message: 'Digite o segundo número',
+    },
+    {
+      name: 'param_3',
+      type: 'number',
+      message: 'Digite o terceiro número',
+    },
+  ]);
 
-Promise.all([readFile(marvel), readFile(otaku), readFile(coach)])
-  .then(([marvel, otaku, coach]) => {
-    const fileSizeSum = marvel.byteLength + otaku.byteLength + coach.byteLength;
-    console.log(`Lidos 3 arquivos totalizando ${fileSizeSum} bytes`);
-  })
-  .catch((error) => {
-    console.error(`Erro ao ler arquivos: ${error.message}`);
-  });
+  try {
+    return console.log(
+      fizzNumber(answers.param_1, answers.param_2, answers.param_3),
+    );
+  } catch {
+    return console.log(
+      fizzNumber(answers.param_1, answers.param_2, answers.param_3),
+    );
+  }
+};
+
+READ_DATA();
