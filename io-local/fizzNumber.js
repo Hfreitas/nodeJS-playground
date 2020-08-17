@@ -11,7 +11,6 @@ const parseParams = (...params) => {
 module.exports = async (x, y, z) => {
   const data = parseParams(x, y, z);
   return new Promise((resolve, reject) => {
-    console.log(data);
     if (
       isNaN(data[x]) ||
       isNaN(data[y]) ||

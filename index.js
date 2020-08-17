@@ -33,5 +33,4 @@ const READ_DATA = async () => {
   }
 };
 
-// Tá quebrado...
 READ_DATA();
