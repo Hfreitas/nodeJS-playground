@@ -21,17 +21,15 @@ const READ_DATA = async () => {
   ]);
 
   try {
-    return console.log(
-      fizzNumber(answers.param_1, answers.param_2, answers.param_3).then(
-        (result) => result,
-      ),
+    const result = await fizzNumber(
+      answers.param_1,
+      answers.param_2,
+      answers.param_3,
     );
+    console.log(result);
   } catch {
-    return console.log(
-      fizzNumber(answers.param_1, answers.param_2, answers.param_3).then(
-        (result) => result,
-      ),
-    );
+    const error = await fizzNumber(answers.param_1, answers.param_2, answers.param_3);
+    console.log(error);
   }
 };
 
